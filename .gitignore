@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/chapter1/target/
+/chapter1/chapter1.iml
+/.idea/
+/chapter2/target/
+/chapter2/chapter2.iml
+/menuManage/target/
+/menuManage/com.hjc.menu.manage.iml
+/menuManage/menuManage.iml
+/SpringBootInitializr/target/

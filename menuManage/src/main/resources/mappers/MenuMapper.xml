@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hjc.menu.dao.menu.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.hjc.menu.model.Menu">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="parent_fk" jdbcType="BIGINT" property="parentFk" />
+    <result column="menu_path" jdbcType="VARCHAR" property="menuPath" />
+    <result column="menu_level" jdbcType="SMALLINT" property="menuLevel" />
+    <result column="create_fk" jdbcType="BIGINT" property="createFk" />
+    <result column="update_fk" jdbcType="BIGINT" property="updateFk" />
+    <result column="date_create" jdbcType="TIMESTAMP" property="dateCreate" />
+    <result column="date_update" jdbcType="TIMESTAMP" property="dateUpdate" />
+    <result column="is_valid" jdbcType="BIT" property="isValid" />
+    <result column="is_disable" jdbcType="BIT" property="isDisable" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, url, parent_fk, menu_path, menu_level, create_fk, update_fk, date_create, 
+    date_update, is_valid, is_disable
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hjc.menu.model.Menu">
+    insert into menu (id, code, name, 
+      url, parent_fk, menu_path, 
+      menu_level, create_fk, update_fk, 
+      date_create, date_update, is_valid, 
+      is_disable)
+    values (#{id,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{parentFk,jdbcType=BIGINT}, #{menuPath,jdbcType=VARCHAR}, 
+      #{menuLevel,jdbcType=SMALLINT}, #{createFk,jdbcType=BIGINT}, #{updateFk,jdbcType=BIGINT}, 
+      #{dateCreate,jdbcType=TIMESTAMP}, #{dateUpdate,jdbcType=TIMESTAMP}, #{isValid,jdbcType=BIT}, 
+      #{isDisable,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hjc.menu.model.Menu">
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="parentFk != null">
+        parent_fk,
+      </if>
+      <if test="menuPath != null">
+        menu_path,
+      </if>
+      <if test="menuLevel != null">
+        menu_level,
+      </if>
+      <if test="createFk != null">
+        create_fk,
+      </if>
+      <if test="updateFk != null">
+        update_fk,
+      </if>
+      <if test="dateCreate != null">
+        date_create,
+      </if>
+      <if test="dateUpdate != null">
+        date_update,
+      </if>
+      <if test="isValid != null">
+        is_valid,
+      </if>
+      <if test="isDisable != null">
+        is_disable,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentFk != null">
+        #{parentFk,jdbcType=BIGINT},
+      </if>
+      <if test="menuPath != null">
+        #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null">
+        #{menuLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="createFk != null">
+        #{createFk,jdbcType=BIGINT},
+      </if>
+      <if test="updateFk != null">
+        #{updateFk,jdbcType=BIGINT},
+      </if>
+      <if test="dateCreate != null">
+        #{dateCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateUpdate != null">
+        #{dateUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null">
+        #{isValid,jdbcType=BIT},
+      </if>
+      <if test="isDisable != null">
+        #{isDisable,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hjc.menu.model.Menu">
+    update menu
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="parentFk != null">
+        parent_fk = #{parentFk,jdbcType=BIGINT},
+      </if>
+      <if test="menuPath != null">
+        menu_path = #{menuPath,jdbcType=VARCHAR},
+      </if>
+      <if test="menuLevel != null">
+        menu_level = #{menuLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="createFk != null">
+        create_fk = #{createFk,jdbcType=BIGINT},
+      </if>
+      <if test="updateFk != null">
+        update_fk = #{updateFk,jdbcType=BIGINT},
+      </if>
+      <if test="dateCreate != null">
+        date_create = #{dateCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dateUpdate != null">
+        date_update = #{dateUpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isValid != null">
+        is_valid = #{isValid,jdbcType=BIT},
+      </if>
+      <if test="isDisable != null">
+        is_disable = #{isDisable,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hjc.menu.model.Menu">
+    update menu
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      parent_fk = #{parentFk,jdbcType=BIGINT},
+      menu_path = #{menuPath,jdbcType=VARCHAR},
+      menu_level = #{menuLevel,jdbcType=SMALLINT},
+      create_fk = #{createFk,jdbcType=BIGINT},
+      update_fk = #{updateFk,jdbcType=BIGINT},
+      date_create = #{dateCreate,jdbcType=TIMESTAMP},
+      date_update = #{dateUpdate,jdbcType=TIMESTAMP},
+      is_valid = #{isValid,jdbcType=BIT},
+      is_disable = #{isDisable,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
